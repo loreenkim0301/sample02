@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>채용 플랫폼 메인 – IA Prototype</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #f5f6f8;
+      color: #222;
+    }
+
+    /* ================= Global Banner ================= */
+    .global-banner {
+      background: #ff6b00;
+      color: #fff;
+      text-align: center;
+      padding: 8px 12px;
+      font-size: 14px;
+    }
+
+    /* ================= Header ================= */
+    header {
+      background: #fff;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .gnb {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 40px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      color: #3563ff;
+    }
+
+    .search {
+      flex: 1;
+      margin: 0 40px;
+    }
+
+    .search input {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 14px;
+    }
+
+    .user-menu {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .lnb {
+      display: flex;
+      gap: 24px;
+      padding: 12px 40px;
+      font-size: 14px;
+      border-top: 1px solid #eee;
+    }
+
+    .lnb span {
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    /* ================= Main Layout ================= */
+    main {
+      display: grid;
+      grid-template-columns: 260px 1fr 300px;
+      gap: 24px;
+      padding: 32px 40px;
+    }
+
+    section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    /* ================= Hero ================= */
+    .hero {
+      grid-column: 1 / -1;
+      background: linear-gradient(90deg, #4b6bff, #6f8bff);
+      color: #fff;
+      padding: 32px;
+      border-radius: 16px;
+    }
+
+    .hero h1 {
+      font-size: 26px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 15px;
+      opacity: 0.9;
+    }
+
+    /* ================= Left ================= */
+    .left h3 {
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+
+    .tip-card {
+      background: #f8f9ff;
+      padding: 14px;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+
+    /* ================= Center ================= */
+    .center h2 {
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    .job-list {
+      display: flex;
+      gap: 16px;
+    }
+
+    .job-card {
+      flex: 1;
+      border: 1px solid #eee;
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .job-card h4 {
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .job-card span {
+      font-size: 13px;
+      color: #666;
+    }
+
+    .job-card button {
+      margin-top: 12px;
+      width: 100%;
+      padding: 10px;
+      background: #3563ff;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    /* ================= Right ================= */
+    .right .ad {
+      background: #222;
+      color: #fff;
+      height: 160px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+
+    .tools button {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      background: #f7f7f7;
+      cursor: pointer;
+    }
+
+    /* ================= Footer ================= */
+    footer {
+      padding: 32px 40px;
+      font-size: 13px;
+      color: #777;
+      background: #fff;
+      border-top: 1px solid #e5e5e5;
+    }
+
+    /* ================= Responsive ================= */
+    @media (max-width: 1024px) {
+      .gnb { padding: 16px 24px; }
+      .search { margin: 0 20px; }
+      .lnb { padding: 12px 24px; gap: 16px; overflow-x: auto; }
+      main { grid-template-columns: 220px 1fr; padding: 24px; }
+      .right { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 768px) {
+      .gnb {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .search {
+        order: 3;
+        flex: 1 0 100%;
+        margin: 0;
+      }
+
+      .lnb {
+        font-size: 13px;
+        gap: 12px;
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+      }
+
+      .job-list {
+        flex-direction: column;
+      }
+
+      footer {
+        padding: 24px 16px;
+        text-align: center;
+      }
+    }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Global Banner -->
+  <div class="global-banner">
+    합격률을 높이는 추천 공고를 확인하세요
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="gnb">
+      <div class="logo">JOB</div>
+      <div class="search">
+        <input type="text" placeholder="직무, 기업명, 키워드를 검색하세요" />
+      </div>
+      <div class="user-menu">기업서비스 | 로그인 | 회원가입</div>
+    </div>
+
+    <div class="lnb">
+      <span>전체카테고리</span>
+      <span>채용정보</span>
+      <span>신입·인턴</span>
+      <span>취업준비</span>
+      <span>기업·연봉</span>
+      <span>커뮤니티</span>
+      <span>취업자료</span>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main>
+
+    <!-- Hero -->
+    <section class="hero">
+      <h1>OO님에게 맞는 채용 공고</h1>
+      <p>지금 가장 합격 가능성이 높은 포지션을 추천해드려요</p>
+    </section>
+
+    <!-- Left -->
+    <section class="left">
+      <h3>오늘의 합격 꿀팁</h3>
+      <div class="tip-card">서류 합격률을 높이는 자소서 구조</div>
+      <div class="tip-card">인적성 준비, 이것만은 꼭</div>
+      <div class="tip-card">면접에서 자주 나오는 질문 TOP 5</div>
+    </section>
+
+    <!-- Center -->
+    <section class="center">
+      <h2>추천 채용 공고</h2>
+      <div class="job-list">
+        <div class="job-card">
+          <h4>프론트엔드 개발자</h4>
+          <span>경력 2년 이상 · D-6</span>
+          <button>즉시지원</button>
+        </div>
+        <div class="job-card">
+          <h4>UX 디자이너</h4>
+          <span>경력 무관 · D-10</span>
+          <button>즉시지원</button>
+        </div>
+        <div class="job-card">
+          <h4>서비스 기획자</h4>
+          <span>경력 3년 이상 · D-3</span>
+          <button>즉시지원</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right -->
+    <section class="right">
+      <div class="ad">제휴 광고 영역</div>
+      <div class="tools">
+        <button>AI 자소서 코칭</button>
+        <button>연봉 계산기</button>
+        <button>글자 수 세기</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    © 채용 플랫폼 · 회사소개 · 이용약관 · 개인정보처리방침 · 고객센터
+  </footer>
+
+</body>
+</html>
